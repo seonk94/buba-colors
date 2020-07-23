@@ -13,39 +13,26 @@ const BasicButton = styled.button`
   padding: 0.25em 1em;
   border-radius: 3px;
   font-weight: 700;
+  color: white;
 
   /* Color the border and text with theme.main */
   border: 1px solid ${(props: ButtonProps) => Color[props.theme].main};
-  ${(props: ButtonProps) => theme[props.theme]}
+  background: ${(props: ButtonProps) => Color[props.theme].main};
+
+  &:hover {
+    cursor: pointer;
+    background: ${(props: ButtonProps) => Color[props.theme].light};
+  }
+
+  &:active {
+    background: ${(props: ButtonProps) => Color[props.theme].dark};
+  }
 `
 
 BasicButton.defaultProps = {
   theme: 'primary'
 }
 
-// Define what props.theme will look like
-const theme = {
-  primary: css`
-    background: ${Color.primary.main};
-    color: white;
-    &:hover {
-      background: ${Color.primary.light};
-    }
-    &:active {
-      background: ${Color.primary.dark};
-    }
-  `,
-  secondary: css`
-    background: ${Color.secondary.main};
-    color: white;
-    &:hover {
-      background: ${Color.secondary.light};
-    }
-    &:active {
-      background: ${Color.secondary.dark};
-    }
-  `,
-};
 
 function Button({ children, onClick, theme }: ButtonProps) {
   return (
