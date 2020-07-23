@@ -6,7 +6,7 @@ export const secondary = {
 
 export const primary = {
   main: '#495057',
-  light: '#dee2e6',
+  light: '#adb5bd',
   dark: '#212529',
 }
 
