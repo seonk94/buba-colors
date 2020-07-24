@@ -34,6 +34,9 @@ const flatStyle = css`
     cursor: pointer;
     background: ${(props: ButtonProps) => Color[props.theme].light};
   }
+  &:active {
+    background: ${(props: ButtonProps) => Color[props.theme].main};
+  }
 `
 
 const outlinedStyle = css`
