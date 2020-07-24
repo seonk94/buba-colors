@@ -6,6 +6,7 @@ type ButtonProps = {
   children: React.ReactNode;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   outlined?: boolean;
+  flat?: boolean;
   theme: 'primary' | 'secondary';
 }
 
@@ -21,6 +22,17 @@ const defaultStyle = css`
 
   &:active {
     background: ${(props: ButtonProps) => Color[props.theme].dark};
+  }
+`
+
+const flatStyle = css`
+  color: ${(props: ButtonProps) => Color[props.theme].main};
+  background: white;
+  border: none;
+
+  &:hover{
+    cursor: pointer;
+    background: ${(props: ButtonProps) => Color[props.theme].light};
   }
 `
 
@@ -45,7 +57,9 @@ const BasicButton = styled.button`
   border-radius: 3px;
   font-weight: 700;
 
-  ${(props: ButtonProps) => props.outlined ? outlinedStyle : defaultStyle}
+  ${(props: ButtonProps) => !props.outlined && !props.flat ? defaultStyle : undefined}
+  ${(props: ButtonProps) => props.outlined ? outlinedStyle : undefined}
+  ${(props: ButtonProps) => props.flat ? flatStyle : undefined}
 `
 
 BasicButton.defaultProps = {
@@ -53,9 +67,9 @@ BasicButton.defaultProps = {
 }
 
 
-function Button({ children, onClick, theme, outlined }: ButtonProps) {
+function Button({ children, onClick, theme, outlined, flat }: ButtonProps) {
   return (
-    <BasicButton onClick={onClick} theme={theme} outlined={outlined}>
+    <BasicButton onClick={onClick} theme={theme} outlined={outlined} flat={flat}>
       {children}
     </BasicButton>
   )
