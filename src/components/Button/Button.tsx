@@ -7,6 +7,8 @@ type ButtonProps = {
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   outlined?: boolean;
   flat?: boolean;
+  small?: boolean;
+  big?: boolean;
   theme: 'primary' | 'secondary';
 }
 
@@ -54,11 +56,23 @@ const outlinedStyle = css`
   }
 `
 
+const smallButton = css`
+  font-size: 0.75em !important;
+  padding: 0.175em 0.85em !important;
+`
+const bigButton = css`
+  font-size: 1.125em !important;
+  padding: 0.5em 1.15em !important;
+`
+
 const BasicButton = styled.button`
   font-size: 1em;
   padding: 0.25em 1em;
   border-radius: 3px;
   font-weight: 700;
+
+  ${(props: ButtonProps) => props.small ? smallButton : undefined}
+  ${(props: ButtonProps) => props.big ? bigButton : undefined}
 
   ${(props: ButtonProps) => !props.outlined && !props.flat ? defaultStyle : undefined}
   ${(props: ButtonProps) => props.outlined ? outlinedStyle : undefined}
@@ -70,9 +84,15 @@ BasicButton.defaultProps = {
 }
 
 
-function Button({ children, onClick, theme, outlined, flat }: ButtonProps) {
+function Button({ children, onClick, theme, outlined, flat, small, big }: ButtonProps) {
   return (
-    <BasicButton onClick={onClick} theme={theme} outlined={outlined} flat={flat}>
+    <BasicButton
+      onClick={onClick}
+      theme={theme}
+      outlined={outlined}
+      small={small}
+      big={big}
+      flat={flat}>
       {children}
     </BasicButton>
   )

@@ -7,12 +7,20 @@ export default {
 }
 
 export const buttonStory = () => <div>
-  <h5>Primary Button</h5>
+  <h3>Primary Button</h3>
   <Button theme='primary'>button</Button>
   <Button theme='primary' outlined>button</Button>
   <Button theme='primary' flat>button</Button>
-  <h5>Sceondary Button</h5>
+  <h4>Button Size</h4>
+  <Button theme='primary' big>button</Button>
+  <Button theme='primary' >button</Button>
+  <Button theme='primary' small>button</Button>
+  <h3>Sceondary Button</h3>
   <Button theme='secondary'>button</Button>
   <Button theme='secondary' outlined>button</Button>
   <Button theme='secondary' flat>button</Button>
+  <h4>Button Size</h4>
+  <Button theme='secondary' big>button</Button>
+  <Button theme='secondary' >button</Button>
+  <Button theme='secondary' small>button</Button>
 </div>;
