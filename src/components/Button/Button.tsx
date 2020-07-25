@@ -9,6 +9,7 @@ type ButtonProps = {
   flat?: boolean;
   small?: boolean;
   big?: boolean;
+  disabled?: boolean;
   theme: 'primary' | 'secondary';
 }
 
@@ -65,6 +66,16 @@ const bigButton = css`
   padding: 0.5em 1.15em !important;
 `
 
+const disabledStyled = css`
+  background: #ccc;
+  border: 1px solid #ccc;
+  color: white;
+  &:hover {
+    background: #ccc !important;
+    cursor: not-allowed !important;
+  }
+`
+
 const BasicButton = styled.button`
   font-size: 1em;
   padding: 0.25em 1em;
@@ -77,6 +88,7 @@ const BasicButton = styled.button`
   ${(props: ButtonProps) => !props.outlined && !props.flat ? defaultStyle : undefined}
   ${(props: ButtonProps) => props.outlined ? outlinedStyle : undefined}
   ${(props: ButtonProps) => props.flat ? flatStyle : undefined}
+  ${(props: ButtonProps) => props.disabled ? disabledStyled : undefined}
 `
 
 BasicButton.defaultProps = {
@@ -84,7 +96,7 @@ BasicButton.defaultProps = {
 }
 
 
-function Button({ children, onClick, theme, outlined, flat, small, big }: ButtonProps) {
+function Button({ children, onClick, theme, outlined, flat, small, big, disabled }: ButtonProps) {
   return (
     <BasicButton
       onClick={onClick}
@@ -92,6 +104,7 @@ function Button({ children, onClick, theme, outlined, flat, small, big }: Button
       outlined={outlined}
       small={small}
       big={big}
+      disabled={disabled}
       flat={flat}>
       {children}
     </BasicButton>
