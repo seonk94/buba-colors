@@ -30,7 +30,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .color-button-box {
-    padding: 12px;
+    padding: 16px;
     flex: 1;
     text-align: center;
     .color-button {
@@ -41,7 +41,7 @@ export default defineComponent({
         height: 60px;
         
         border: none;
-        border-radius: 30px;
+        border-radius: 12px;
         
         background: var(--bg-color);
         
