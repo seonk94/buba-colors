@@ -39,7 +39,7 @@ export default defineComponent({
     h2 {
         text-transform: capitalize;
         margin-right: auto;
-        color: dimgray;
+        color: var(--primary-text-color);
         font-weight: 900;
         text-shadow: 2px 2px 4px rgba(0,0,0,.3), -2px -2px 4px rgba(255,255,255,1);
     }

@@ -45,13 +45,19 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+
+:root {
+  --bg-color: #efefef;
+  --primary-text-color: #696969;
+}
+
 html {
   height: 100%;
 }
 body {
   margin: 0;
   height: 100%;
-  background: #efefef;
+  background: var(--bg-color);
 }
 .color-section {
   display: block;

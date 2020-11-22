@@ -34,46 +34,30 @@ export default defineComponent({
     flex: 1;
     text-align: center;
     .color-button {
-        // box-shadow: -6px -6px 9px 0px white, 6px 6px 9px rgba(0, 0, 0, 0.4);
-        // font-size: 20px;
+        box-shadow: -6px -6px 9px 0px white, 6px 6px 9px rgba(0, 0, 0, 0.4);
+        font-size: 20px;
         
-        // width: 60px;
-        // height: 60px;
+        width: 60px;
+        height: 60px;
         
-        // border: none;
-        // border-radius: 30px;
+        border: none;
+        border-radius: 30px;
         
-        // background: #eee;
+        background: var(--bg-color);
         
-        // cursor: pointer;
-        
-        // &:hover, &:active {
-        //     background: #aaa;
-        // }
-        
-        // &:active {
-        //     box-shadow: inset -6px -6px 9px 0px rgba(255,255,255,0.4), inset 6px 6px 9px rgba(44, 41, 41, 0.4)
-        // }
-        border: 0;
-        outline: 0;
-        border-radius: 50%;
-        padding: 12px;
-        background-color: #efefef;
-        text-shadow: 1px 1px 0 #FFF;
-        color:#61677C;
-        font-weight: bold;
-        box-shadow: -5px -5px 20px #FFF,  5px 5px 20px #BABECC;
-        transition: all 0.2s ease-in-out;
         cursor: pointer;
-        font-weight: 600;
         
         &:hover {
             box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
         }
         
         &:active {
-            box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+            box-shadow: inset -6px -6px 9px 0px rgba(255,255,255,0.4), inset 6px 6px 9px rgba(44, 41, 41, 0.4)
         }
+
+        text-shadow: 1px 1px 0 #FFF;
+        outline: 0;
+        transition: all 0.2s ease-in-out;
         
         &.unit {
             border-radius: 8px;
