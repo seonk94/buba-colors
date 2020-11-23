@@ -1,6 +1,6 @@
 <template>
   <div class="color-button-box">
-    <button class="color-button">
+    <button class="color-button" @click="copyToClipboard">
         <div class="circle" :style="circleStyle">
         </div>
     </button>
@@ -21,8 +21,19 @@ export default defineComponent({
     setup(props) {
         const circleStyle = computed(() => ({ background: props.color }))
 
+        function copyToClipboard() {
+            const tempTextareaElement = document.createElement('textarea');
+            tempTextareaElement.value = props.color;
+            document.body.appendChild(tempTextareaElement);
+
+            tempTextareaElement.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextareaElement);
+        }
+
         return {
-            circleStyle
+            circleStyle,
+            copyToClipboard
         }
     }
 })
