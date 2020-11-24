@@ -23,8 +23,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs a single command using the runners shell
-      - name: Build
+      - name: Install
         run: npm install
+
+      - name: Build
         run: npm run build
 
       - name: Deploy to Firebase
