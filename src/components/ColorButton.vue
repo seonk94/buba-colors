@@ -1,6 +1,6 @@
 <template>
   <div class="color-button-box">
-    <button class="color-button" @click="copyToClipboard">
+    <button class="color-button" :class="{ active: isActive }" @click="copyToClipboard">
         <div class="circle" :style="circleStyle">
         </div>
     </button>
@@ -8,7 +8,9 @@
 </template>
 
 <script lang="ts">
+import { key } from '@/store';
 import { defineComponent, computed } from 'vue';
+import { useStore } from 'vuex';
 
 
 export default defineComponent({
@@ -19,7 +21,9 @@ export default defineComponent({
         }
     },
     setup(props) {
+        const store = useStore(key);
         const circleStyle = computed(() => ({ background: props.color }))
+        const isActive = computed(() => props.color === store.state.color)
 
         function copyToClipboard() {
             const tempTextareaElement = document.createElement('textarea');
@@ -29,9 +33,11 @@ export default defineComponent({
             tempTextareaElement.select();
             document.execCommand('copy');
             document.body.removeChild(tempTextareaElement);
+            store.dispatch('clickColor', props.color);
         }
 
         return {
+            isActive,
             circleStyle,
             copyToClipboard
         }
@@ -63,7 +69,14 @@ export default defineComponent({
         }
         
         &:active {
-            box-shadow: inset -6px -6px 9px 0px rgba(255,255,255,0.4), inset 6px 6px 9px rgba(44, 41, 41, 0.4)
+            box-shadow: inset -6px -6px 9px 0px rgba(255,255,255,0.4), inset 6px 6px 9px rgba(44, 41, 41, 0.4);
+        }
+
+        &.active {
+            box-shadow: inset -6px -6px 9px 0px rgba(255,255,255,0.4), inset 6px 6px 9px rgba(44, 41, 41, 0.4);
+            .circle {
+                box-shadow: -6px -6px 9px 0px white, 6px 6px 9px rgba(0, 0, 0, 0.4);
+            }
         }
 
         text-shadow: 1px 1px 0 #FFF;
@@ -84,13 +97,14 @@ export default defineComponent({
                 margin-right: 0; 
             }
         }
+
+        .circle {
+            margin: auto;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
     }
 }
-.circle {
-    margin: auto;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
 
-}
 </style>
