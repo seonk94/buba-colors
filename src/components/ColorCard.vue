@@ -1,6 +1,6 @@
 <template>
   <div class="color-card">
-    <div class="color-card-header">
+    <div class="color-card-header shadow-text">
         <h2>{{ title }}</h2>
     </div>
     <div class="color-card-body">
@@ -33,16 +33,13 @@ export default defineComponent({
     flex-direction: column;
     align-items: center;
     padding: 24px;
+
+    &:last-child {
+        padding-bottom: 60px;
+    }
 }
 .color-card-header {
     display: flex;
-    h2 {
-        text-transform: capitalize;
-        margin-right: auto;
-        color: var(--primary-text-color);
-        font-weight: 900;
-        text-shadow: 2px 2px 4px rgba(0,0,0,.3), -2px -2px 4px rgba(255,255,255,1);
-    }
 }
 .color-card-body {
     display: flex;

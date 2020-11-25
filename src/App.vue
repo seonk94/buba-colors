@@ -3,16 +3,19 @@
     <section class="color-section">
       <color-card v-for="(color, index) of state" :key="index" :title="index" :colors="color"/>
     </section>
+    <color-footer />
   </main>
 </template>
 
 <script lang="ts">
 import ColorCard from './components/ColorCard.vue';
+import ColorFooter from './components/ColorFooter.vue';
 import { defineComponent, reactive } from 'vue';
 
 export default defineComponent({
   components: {
     ColorCard,
+    ColorFooter,
   },
   setup() {
     const state = reactive({
@@ -61,5 +64,11 @@ body {
 }
 .color-section {
   display: block;
+}
+.shadow-text {
+  text-transform: capitalize;
+  color: var(--primary-text-color);
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.3), -2px -2px 4px rgba(255,255,255,1);
 }
 </style>
