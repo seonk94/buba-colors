@@ -32,7 +32,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px;
+    padding: 0 24px;
 
     &:last-child {
         padding-bottom: 60px;

@@ -6,10 +6,8 @@
     <div class="spacer">
 
     </div>
-    <div class="color-info">
-      <div class="color-info-square" :style="squareStyle">
-
-      </div>
+    <div class="color-info shadow-text">
+      <div class="color-info-square" :style="squareStyle" />
       {{ selectedColor }}
     </div>
   </footer>  
