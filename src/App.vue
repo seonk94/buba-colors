@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import ColorCard from './components/ColorCard.vue';
-import ColorFooter from './components/ColorFooter.vue';
+import ColorCard from './components/color/ColorCard.vue';
+import ColorFooter from './components/color/ColorFooter.vue';
 import { defineComponent, reactive } from 'vue';
 
 export default defineComponent({
