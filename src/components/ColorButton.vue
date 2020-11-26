@@ -4,6 +4,7 @@
         <div class="circle" :style="circleStyle">
         </div>
     </button>
+    <h6 class="color-text shadow-text" @click="copyToClipboard">{{ color }}</h6>
   </div>
 </template>
 
@@ -50,6 +51,9 @@ export default defineComponent({
     padding: 12px;
     flex: 1;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
     .color-button {
         box-shadow: -6px -6px 9px 0px white, 6px 6px 9px rgba(0, 0, 0, 0.4);
         font-size: 20px;
@@ -103,6 +107,13 @@ export default defineComponent({
             width: 32px;
             height: 32px;
             border-radius: 50%;
+        }
+    }
+
+    .color-text {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
     }
 }
