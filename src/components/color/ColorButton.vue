@@ -5,16 +5,22 @@
         </div>
     </button>
     <h6 class="color-text shadow-text" @click="copyToClipboard">{{ color }}</h6>
+    <snack-bar :modelValue="showSnackBar" @update:modelValue="showSnackBar = $event">
+        {{ color }} Selected.
+    </snack-bar>
   </div>
 </template>
 
 <script lang="ts">
 import { key } from '@/store';
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
 import { useStore } from 'vuex';
+import SnackBar from '../common/SnackBar.vue';
+
 
 
 export default defineComponent({
+  components: { SnackBar },
     props: {
         color: {
             type: String,
@@ -23,6 +29,7 @@ export default defineComponent({
     },
     setup(props) {
         const store = useStore(key);
+        const showSnackBar = ref(false);
         const circleStyle = computed(() => ({ background: props.color }))
         const isActive = computed(() => props.color === store.state.color)
 
@@ -35,10 +42,13 @@ export default defineComponent({
             document.execCommand('copy');
             document.body.removeChild(tempTextareaElement);
             store.dispatch('clickColor', props.color);
+
+            showSnackBar.value = true;
         }
 
         return {
             isActive,
+            showSnackBar,
             circleStyle,
             copyToClipboard
         }
