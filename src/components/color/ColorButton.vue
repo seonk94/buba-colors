@@ -64,6 +64,7 @@ export default defineComponent({
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     .color-button {
         box-shadow: -6px -6px 9px 0px white, 6px 6px 9px rgba(0, 0, 0, 0.4);
         font-size: 20px;
